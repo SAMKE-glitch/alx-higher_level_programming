@@ -3,12 +3,8 @@
 if __name__ == "__main__":
     import sys
 
-    count = int(len(sys.argv) - 1)
-    if count == 0:
-        print(0)
-    else:
-    total = 0
-    for arg in sys.argv[1:]:
-        total += count
-        print(total)
+    sum = 0
+    for i in range(len(sys.argv) - 1):
+        sum += int(sys.argv[i + 1])
+        print("{}".format(sum))
 
