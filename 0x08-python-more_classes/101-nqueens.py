@@ -24,7 +24,7 @@ def get_solution(board):
     solution = []
     for r in range(len(board)):
         for c in range(len(board)):
-            if board[r][c] == ""Q:
+            if board[r][c] == "Q":
                 solution.append([r, c])
                 break
     return (solution)
@@ -33,20 +33,20 @@ def get_solution(board):
 def xout(board, row, col):
     """ X out spots on a chessboard.
 
-    all spots where non-attacking gueens can no
+    All spots where non-attacking gueens can no
     longer be played are X-ed out.
 
     Args:
-        board (list): the current working chessboard.
-        row (int): the row where a queen was last played
-        col (int): the column where a queen was last played.
+        board (list): The current working chessboard.
+        row (int): The row where a queen was last played
+        col (int): The column where a queen was last played.
     """
     # X out all forward spots
     for c in range(col + 1, len(board)):
         board[row][c] = "x"
     # X out all backwards spots
     for c in range(col - 1, -1, -1):
-        board[row][row] = "x"
+        board[row][c] = "x"
     # X out all spots below
     for r in range(row + 1, len(board)):
         board[r][col] = "x"
@@ -68,7 +68,7 @@ def xout(board, row, col):
         board[r][c]
         c -= 1
     # X out all spots diagonally up to the right
-    c = col +1
+    c = col + 1
     for r in range(row - 1, -1, -1):
         if c>= len(board):
             break
@@ -87,7 +87,7 @@ def recursive_solve(board, row, queens, solutions):
     """Recursively solve an N-queens puzzle.
 
     Args:
-        board (list): the current working chessboard
+        board (list): The current working chessboard
         row (int): The current working row
         queens (int): The current number of placed queens
         solutions (list): A list of lists of solutions.
@@ -103,7 +103,7 @@ def recursive_solve(board, row, queens, solutions):
             tmp_board = board_deepcopy(board)
             tmp_board[row][c] = "Q"
             xout(tmp_board, row, c)
-            solutions = recursive-solve(tmp_board, row + 1, queens + 1, solutions)
+            solutions = recursive_solve(tmp_board, row + 1, queens + 1, solutions)
 
 
     return (solutions)
