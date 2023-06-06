@@ -4,7 +4,7 @@ The "0-add_integer" module
 Using "add_integer"
 -------------------
 
-Importingg function from the module:
+Importing function from the module:
     >>> add_integer = __import__('0-add_integer').add_integer
 
 Adding 1 and 2
@@ -87,7 +87,7 @@ Case Overflow 2:
           ...
     OverflowError: cannot convert float infinity to integer
 
-Case Nan:
+Case NaN:
 
     >>> add_integer(0, float('nan'))
     Traceback (most recent call last):
