@@ -2,7 +2,7 @@
 """This module defines a class Stduent"""
 
 
-class Stduent:
+class Student:
     """Class representing a stduent"""
 
     def __init__(self, first_name, last_name, age):
