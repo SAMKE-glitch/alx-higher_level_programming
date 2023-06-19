@@ -394,5 +394,31 @@ class TestRectangle_y(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             Rectangle(3, 5, 0, -1)
 
+class TestRectangle_order_of_intialization(unittest.TestCase):
+    """Unittests for testing Rectangle order of attribute initialization"""
+    def test_width_before_height(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("invalid width", "invalid height")
+
+    def test_width_before_x(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("invalid width", 2, "invalid x")
+
+    def test_width_before_y(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("invalid width", 2, 3, "invalid y")
+
+    def test_height_before_x(self):
+        with self.assertRaisesRegex(TypeError, "Height must be an integer"):
+            Rectangle(1, "invalid Height", "invalid x")
+
+    def test_height_before_y(self):
+        with self.assertRaisesRegex(TypeError, "Height must be an integer"):
+            Rectangle(1, "invalid height", 2, "invalid y")
+
+    def test_x_before_y(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(1, 2, "invalid x", "invalid y")
+
 if __name__ == "__main__":
     unittest.main()

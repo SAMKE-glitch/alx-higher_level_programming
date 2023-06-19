@@ -104,3 +104,68 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
 
         self.__y = value
+
+    def area(self):
+        """
+            returns the are of the Rectangle instance.
+        """
+
+        return (self.__width * self.__height)
+
+    def display(self):
+        """
+            Prints the Rectangle instance with '#'
+        """
+        rectangle = ""
+        print_symbol = "#"
+
+        # for i in range(self.__height - 1):
+        #   rectangle += print_symbol * self.__width + "\n"
+        # rectangle += print_symbol * self.__width
+
+        # print("{}".format(rectangle))
+
+        print("\n" * self.y, end="")
+
+        for i in range(self.height):
+            rectangle += (" " * self.x) + (print_symbol * self.width) + "\n"
+            print(rectangle, end="")
+
+    def __str__(self):
+        """
+            returns a string format of the rectangle
+        """
+        return "[{}] ({}0 {}/{} - {}/{}".format(type(self).__name__,
+                                                self.id, self.__x,
+                                                self.__y, self.__width,
+                                                self.__height)
+
+    def update(self, *args, **kwargs):
+        """
+            assigns key/value argument to attributes
+            wargs is skipped if args is not empty
+            Args:
+                *args - variable number of no-keyword args
+                **kwargs - variable number of keywarded args
+        """
+        if len(args) == 0:
+            for key, val in kwargs.items():
+                self.__setattr__(key, val)
+            return
+
+        try:
+            self.id = args[0]
+            selfwidth = args[1]
+            self.height = args[2]
+            self.x = args[3]
+            self.y = args[4]
+        except IndexError:
+            pass
+
+    def to_dictionary(self):
+        """
+            returns the dictionary repr of a rectangle
+        """
+        return {'x': getattr(self, "x"), 'y': getattr(self, "y"),
+                'id': getattr(self, "id"), 'height': getattr(self, "height"),
+                'width': getattr(self, "width")}
