@@ -6,6 +6,7 @@ Thi script defines a city class to work with mysqlalchemy orm
 from model_state import Base, State
 from sqlalchemy import Column, Integer, String, ForeignKey
 
+
 class City(Base):
     """
     City class
